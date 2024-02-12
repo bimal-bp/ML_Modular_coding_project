@@ -1,17 +1,18 @@
-from fastapi import FastAPI, Form, Request
+from fastapi import FastAPI,Form,Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-import numpy as np
-from src.pipeline.predict_pipeline import CustomData, PredictPipeline
+import numpy as np 
+from src.pipeline.predict_pipeline import CustomData,PredictPipeline
 
-app = FastAPI()
-templates = Jinja2Templates(directory="templates")
+app=FastAPI()
+templates=Jinja2Templates(directory="templates")
 
-@app.get("/", response_class=HTMLResponse)
+
+@app.get("/",response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("index.html",{"request":request})
 
-@app.post("/predictdata", response_class=HTMLResponse)
+@app.post("/prediction",response_class=HTMLResponse)
 async def predict_datapoint(
     request: Request,
     gender: str = Form(...),
@@ -31,7 +32,6 @@ async def predict_datapoint(
         reading_score=reading_score,
         writing_score=writing_score,
     )
-    
     pred_df = data.get_data_as_data_frame()
     print(pred_df)
     print("Before Prediction")
