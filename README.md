@@ -11,4 +11,6 @@
 - 9. DATA Ingestion,...., Model Trainer 
 - 10. Aap.py
 - 11. Dockerfile
-- 12. AWS DEPLOY wit GItHUB action
+- 12. CICD - EC2-ECR
+- 12. AWS DEPLOY & Public access
+- ALL DONE BIMAL-BP
